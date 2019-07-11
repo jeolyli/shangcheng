@@ -1,0 +1,89 @@
+<?xml version= "1.0" encoding ="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.me.core.dao.product.BrandDao">
+
+
+  <resultMap type="Brand" id="brand">
+    <result column="img_url" property="imgUrl"/>
+    <result column="is_display" property="isDisplay"/>
+  </resultMap>
+  <!-- 	//查询列表  通过 品牌名称  是否可见 -->
+  <!-- 	public List<Brand> selectBrandListByQuery(BrandQuery brandQuery); -->
+  <select id="selectBrandListByQuery" parameterType="BrandQuery" resultMap="brand">
+    select * from bbs_brand
+    <where>
+      <if test="name != null">
+        name like "%"#{name}"%"
+      </if>
+      <if test="isDisplay != null">
+        and is_display = #{isDisplay}
+      </if>
+    </where>
+    <if test="startRow != null">
+      limit #{startRow},#{pageSize}
+    </if>
+  </select>
+
+  <!-- 			//总条数  符合条件的 -->
+  <!-- 	public Integer countBrandByQuery(BrandQuery brandQuery); -->
+  <select id="countBrandByQuery" parameterType="BrandQuery" resultType="Integer">
+    select count(1) from bbs_brand
+    <where>
+      <if test="name != null">
+        name like "%"#{name}"%"
+      </if>
+      <if test="isDisplay != null">
+        and is_display = #{isDisplay}
+      </if>
+    </where>
+  </select>
+
+  <!-- 			//通过ID查询一个品牌 -->
+  <!-- 	public Brand selectBrandById(Long id); -->
+  <select id="selectBrandById" parameterType="Long" resultMap="brand">
+    select * from bbs_brand
+    <where>
+      id = #{haha}
+    </where>
+  </select>
+
+  <!-- 		//修改品牌 通过ID -->
+  <update id="updateBrandById" parameterType="Brand">
+    update bbs_brand
+    <set>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="description != null">
+        description = #{description},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl},
+      </if>
+      <if test="sort != null">
+        sort = #{sort},
+      </if>
+      <if test="isDisplay != null">
+        is_display = #{isDisplay}
+      </if>
+    </set>
+    <where>
+      id = #{id}
+    </where>
+  </update>
+
+  <!-- 		//批量删除   (1,2,3)-->
+  <!-- 	public void deletes(Long[] ids); -->
+  <delete id="deletes" parameterType="Long[]">
+    delete from bbs_brand
+    <where>
+      id in
+      <foreach collection="array" item="id" separator="," open="(" close=")">
+        #{id}
+      </foreach>
+    </where>
+  </delete>
+
+</mapper>

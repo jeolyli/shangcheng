@@ -1,0 +1,5 @@
+com\me\core\controller\BlandController.class
+com\me\core\controller\CenterController.class
+com\me\core\controller\ProductController.class
+com\me\core\controller\UploadController.class
+com\me\core\controller\SkuController.class

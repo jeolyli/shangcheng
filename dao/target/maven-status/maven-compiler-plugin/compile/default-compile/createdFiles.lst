@@ -1,0 +1,9 @@
+com\me\core\dao\order\OrderDao.class
+com\me\core\dao\order\DetailDao.class
+com\me\core\dao\ad\PositionDao.class
+com\me\core\dao\product\ProductDao.class
+com\me\core\dao\product\BrandDao.class
+com\me\core\dao\user\BuyerDao.class
+com\me\core\dao\ad\AdDao.class
+com\me\core\dao\product\ColorDao.class
+com\me\core\dao\product\SkuDao.class

@@ -1,0 +1,5 @@
+com\me\core\service\product\UploadServiceImpl.class
+com\me\core\service\product\SkuServiceImpl.class
+com\me\core\service\product\ColorServiceImpl.class
+com\me\core\service\product\ProductServiceImpl.class
+com\me\core\service\product\BrandServiceImpl.class
